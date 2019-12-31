@@ -32,6 +32,18 @@
 <script src="/lib/js/mejs.js"></script>
 <script>
   $(function(){
+
+	$.ajax({
+	type: "GET",
+	url: "/offer/findPcOffer",
+	success: function (result) {
+	var data=result.data;
+	console.log(result);
+	},
+	error: function (error) {
+	console.log(error);
+	}
+	});
 	  
  	 var tr="<tr>"+
          +"<th>所属产品(skuNum)</th>"
@@ -59,7 +71,7 @@
 	  
 	  $.ajax({
 		    type: "GET",
-		    url: "/character/findCharacter?charName="+$("#charName").val()+"&charNum="+$("#charNum").val()
+		    url: "/character/findCharacterByOpreation?charName="+$("#charName").val()+"&charNum="+$("#charNum").val()
 		    		+"&skuName="+$("#skuName").val()+"&skuNum="+$("#skuNum").val(),
 		    success: function (result) {
 		    	var data=result.data;

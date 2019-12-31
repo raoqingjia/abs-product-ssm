@@ -29,7 +29,7 @@ public class characterController {
 	 */
 	@RequestMapping("/findCharacter")
 	@ResponseBody
-	public MessageObject findCharacter(String charName,String charNum,String skuName,String skuNum) {
+	public MessageObject<CharacterEntity> findCharacter(String charName,String charNum,String skuName,String skuNum) {
 		
 		List<CharacterEntity> result = characterService.findCharacter(charName,charNum,skuName,skuNum);
 		if(result==null){
@@ -44,5 +44,16 @@ public class characterController {
 		msg.setDescribe("查询数据成功!");
 		return msg;
 	}
-
+	@RequestMapping("/findCharacterByOpreation")
+	@ResponseBody
+	public MessageObject <CharacterEntity> findCharacterByOpreation(String charName,String charNum,String skuName,String skuNum){
+		
+		List<CharacterEntity> characterList= characterService.findCharacterByOpreation(charName, charNum, skuName, skuNum);
+		MessageObject<CharacterEntity>  msg=new MessageObject<CharacterEntity>();
+		msg.setData(characterList);
+		msg.setDescribe("查询数据成功!");
+		msg.setStatus(200);
+		return msg;
+	}
+	
 }

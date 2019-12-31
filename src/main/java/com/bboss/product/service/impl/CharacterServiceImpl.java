@@ -16,6 +16,7 @@ import com.bboss.product.dao.interfaces.PcOfferDao;
 import com.bboss.product.dao.interfaces.PcSkuDao;
 import com.bboss.product.dao.interfaces.SkuCharacterDao;
 import com.bboss.product.entity.CharacterEntity;
+import com.bboss.product.entity.PcOfferEntity;
 import com.bboss.product.entity.PcSkuEntity;
 import com.bboss.product.exception.ServiceException;
 import com.bboss.product.service.interfaces.CharacterService;
@@ -27,12 +28,9 @@ public class CharacterServiceImpl implements CharacterService {
 	public SkuCharacterDao skuCharacterDao;
 	@Autowired
 	public PcSkuDao pcSkuDao;
-	@Autowired
-	public PcOfferDao pcOfferDao;
 
 	public List<CharacterEntity> findCharacter(String charName, String charNum,String skuName, String skuNum) {
 		
-		List <Map<String,Object>> pcOfferList=pcOfferDao.findPcOffer();
 		List<PcSkuEntity> pcSkuList=new ArrayList<PcSkuEntity>();
 		List<CharacterEntity> resultList = new ArrayList<CharacterEntity>();
 		if("".equals(skuName)) {
@@ -67,4 +65,10 @@ public class CharacterServiceImpl implements CharacterService {
 		return resultList;
 	}
  
+	
+	public List<CharacterEntity> findCharacterByOpreation(String charName, String charNum, String skuName,
+			String skuNum) {
+		
+		return new ArrayList<CharacterEntity>();
+	}
 }

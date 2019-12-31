@@ -2,10 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bboss.product.dao.interfaces.PcOfferDao">
-    <sql id="pcOffer">
-     FROM  ABS_PRODUCT.PC_OFFER
-    </sql>
-	<select id="findPcOffer" resultType="map">
-		SELECT * <include refid="pcOffer"></include>
+	<sql id="pcOffer">
+		FROM ABS_PRODUCT.PC_OFFER
+	</sql>
+	<resultMap id="pcOfferEntity" type="pcOfferEntity">
+		<result property="offerName" column="OFFER_NAME"></result>
+		<result property="offerNum" column="OFFER_NUM"></result>
+		<result property="offerType" column="OFFER_TYPE"></result>
+		<result property="status" column="STATUS"></result>
+		<result property="action" column="ACTION"></result>
+	</resultMap>
+	<select id="findPcOffer" resultMap="pcOfferEntity">
+		SELECT *
+		<include refid="pcOffer"></include>
 	</select>
 </mapper>

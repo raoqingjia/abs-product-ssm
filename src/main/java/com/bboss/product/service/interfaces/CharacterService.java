@@ -7,5 +7,5 @@ import com.bboss.product.entity.CharacterEntity;
 
 public interface CharacterService {
 	List<CharacterEntity> findCharacter(String charName,String charNum,String skuName, String skuNum);
-	
+	List<CharacterEntity> findCharacterByOpreation(String charName,String charNum,String skuName, String skuNum);
 }
