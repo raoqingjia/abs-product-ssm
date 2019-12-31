@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bboss.product.dao.interfaces.PcSkuDao">
+    <sql id="pcSku">
+     FROM  ABS_PRODUCT.PC_SKU
+    </sql>
+    <resultMap id="pcSkuEntity" type="pcSkuEntity">
+       <result property="skuNum" column="SKU_NUM"></result>
+       <result property="skuName" column="SKU_NAME"></result>
+       <result property="status" column="STATUS"></result>
+       <result property="action" column="ACTION"></result>
+       <result property="baseSku" column="BASE_SKU"></result>
+    </resultMap>
+	<select id="findPcSku" resultMap="pcSkuEntity">
+		SELECT * 
+		<include refid="pcSku"></include>
+		<where>
+		   <if test="skuNum!=null and skuNum!=''">
+		    SKU_NUM = #{skuNum}
+		  </if>
+		  <if test="skuName!=null and skuName!=''">
+		    <bind name="skuNameLink" value=" '%' + skuName + '%' "/>
+		    AND SKU_NAME like #{skuNameLink}  
+		  </if> 
+		</where>
+	</select>
+</mapper>

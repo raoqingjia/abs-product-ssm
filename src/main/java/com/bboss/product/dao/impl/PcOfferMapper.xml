@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bboss.product.dao.interfaces.PcOfferDao">
+    <sql id="pcOffer">
+     FROM  ABS_PRODUCT.PC_OFFER
+    </sql>
+	<select id="findPcOffer" resultType="map">
+		SELECT * <include refid="pcOffer"></include>
+	</select>
+</mapper>

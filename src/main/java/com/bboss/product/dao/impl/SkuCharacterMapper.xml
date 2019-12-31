@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bboss.product.dao.interfaces.SkuCharacterDao">
+    <sql id="pcSkuCharacter">
+     FROM  ABS_PRODUCT.PC_SKU_CHARACTER
+    </sql>
+    <resultMap id="charEntity" type="characterEntity">
+       <result property="alias" column="ALIAS"></result>
+       <result property="bizCharEnumSpecLst" column="ENUM_SQL"></result>
+       <result property="charName" column="CHAR_NAME"></result>
+       <result property="charNum" column="CHAR_NUM"></result>
+       <result property="charType" column="CHAR_TYPE"></result>
+       <result property="defaultFlag" column="DEFAULT_FLAG"></result>
+       <result property="maxLength" column="MAC_LENGTH"></result>
+       <result property="optionalFlag" column="OPTIONAL_FLAG"></result>
+       <result property="readonly" column="READONLY"></result>
+       <result property="regular" column="REGULAR"></result>
+       <result property="skuNum" column="SKU_NUM"></result>
+       <result property="toBossFlag" column="TO_BOSS_FLAG"></result>
+    </resultMap>
+	<select id="findCharacter" resultMap="charEntity">
+		SELECT * 
+		<include refid="pcSkuCharacter"></include>
+		<where>
+		  <if test="charName!=null and charName!=''">
+		   <bind name="charNameLink" value=" '%' + charName + '%' "/>
+		   CHAR_NAME LIKE #{charNameLink}  
+		  </if> 
+		  <if test="charNum!=null and charNum!=''">
+		    AND  CHAR_NUM = #{charNum}
+		  </if>
+		  <if test="skuNum!=null and skuNum!=''">
+		     AND  SKU_NUM = #{skuNum}
+		  </if>
+		</where>
+	</select>
+</mapper>
+
+
