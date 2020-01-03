@@ -20,7 +20,7 @@ public class AdviceExceptionHandler {
 		MessageObject<List> msg=new MessageObject();
 		msg.setData(null);
 		msg.setStatus(500);
-		msg.setDescribe(e.getMessage());
+		msg.setDescribe(e.getMessage()+"-RuntimeException");
 		return msg;	
     }
 	
@@ -37,7 +37,7 @@ public class AdviceExceptionHandler {
 		MessageObject<List> msg=new MessageObject();
 		msg.setData(null);
 		msg.setStatus(500);
-		msg.setDescribe(e.getMessage());
+		msg.setDescribe(e.getMessage()+"-ConnectException");
 		return msg;	
     }
 }

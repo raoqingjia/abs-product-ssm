@@ -15,5 +15,7 @@
 	<select id="findPcOffer" resultMap="pcOfferEntity">
 		SELECT *
 		<include refid="pcOffer"></include>
+		WHERE OFFER_TYPE!=99
 	</select>
+	
 </mapper>
