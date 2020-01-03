@@ -35,7 +35,7 @@
 
 	$.ajax({
 	type: "GET",
-	url: "/offer/findPcOffer",
+	url: "/offer/findPcOfferSkuOpreationLinkage",
 	success: function (result) {
 	var data=result.data;
 	console.log(result);

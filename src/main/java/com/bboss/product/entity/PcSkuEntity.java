@@ -6,6 +6,8 @@ public class PcSkuEntity implements Serializable{
 
 	private static final long serialVersionUID = 3107444663164186873L;
     
+	private String  offerName;
+	private String  offerNum;
 	private String  skuNum;
 	private String  skuName;
 	private String  status;
@@ -15,14 +17,19 @@ public class PcSkuEntity implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PcSkuEntity(String skuNum, String skuName, String status, String action, String baseSku) {
+    
+	public PcSkuEntity(String offerName, String offerNum, String skuNum, String skuName, String status, String action,
+			String baseSku) {
 		super();
+		this.offerName = offerName;
+		this.offerNum = offerNum;
 		this.skuNum = skuNum;
 		this.skuName = skuName;
 		this.status = status;
 		this.action = action;
 		this.baseSku = baseSku;
 	}
+
 	public String getSkuNum() {
 		return skuNum;
 	}
@@ -53,13 +60,32 @@ public class PcSkuEntity implements Serializable{
 	public void setBaseSku(String baseSku) {
 		this.baseSku = baseSku;
 	}
+	
+	
+	public String getOfferName() {
+		return offerName;
+	}
+
+	public void setOfferName(String offerName) {
+		this.offerName = offerName;
+	}
+
+	public String getOfferNum() {
+		return offerNum;
+	}
+
+	public void setOfferNum(String offerNum) {
+		this.offerNum = offerNum;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	@Override
 	public String toString() {
-		return "PcSkuEntity [skuNum=" + skuNum + ", skuName=" + skuName + ", status=" + status + ", action=" + action
-				+ ", baseSku=" + baseSku + "]";
+		return "PcSkuEntity [offerName=" + offerName + ", offerNum=" + offerNum + ", skuNum=" + skuNum + ", skuName="
+				+ skuName + ", status=" + status + ", action=" + action + ", baseSku=" + baseSku + "]";
 	}
-	
+    
 }
