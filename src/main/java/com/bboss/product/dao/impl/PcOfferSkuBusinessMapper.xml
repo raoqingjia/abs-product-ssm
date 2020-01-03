@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bboss.product.dao.interfaces.PcOfferSkuBusinessDao">
+	<sql id="pcOfferSkuAssoc">
+		FROM ABS_PRODUCT.PC_OFFER_SKU_ASSOC
+	</sql>
+	<!-- 商品下对应的产品名称 -->
+	<resultMap id="pcSkuEntity" type="pcSkuEntity">
+	   <result property="offerNum" column="OFFER_NUM"></result>
+	   <result property="skuName" column="SKU_NAME"></result>
+	   <result property="skuNum" column="SKU_NUM"></result>
+	   <result property="operationSubType" column="OPERATION_SUB_TYPE"></result>
+	   <result property="operationSubName" column="DESCRIBE"></result>
+	</resultMap>
+	<select id="findPcOfferSkuAssoc" resultMap="pcSkuEntity">
+	   SELECT  O.OFFER_NUM, O.SKU_NUM  ,S.SKU_NAME   FROM ABS_PRODUCT.PC_OFFER_SKU_ASSOC  O  JOIN 
+	   ABS_PRODUCT.PC_SKU  S  ON O.SKU_NUM = S.SKU_NUM
+	</select>
+	 
+	 <select id="findPcSkuBusiness" resultMap="pcSkuEntity">
+	    SELECT * FROM ABS_PRODUCT.PC_SKU_BUSINESS
+	 </select>
+</mapper>

@@ -7,11 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.bboss.product.entity.CharacterEntity;
+import com.bboss.product.entity.PcSkuEntity;
 
 
-public interface SkuCharacterDao {
+public interface PcOfferSkuBusinessDao {
 
-	List<CharacterEntity> findCharacter(@Param(value = "charName") String charName,
-			@Param(value = "charNum") String charNum,
-			@Param(value = "skuNum") String skuNum);
+	List<PcSkuEntity> findPcOfferSkuAssoc();
+	List<PcSkuEntity> findPcSkuBusiness();
 }
